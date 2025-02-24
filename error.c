@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 00:10:13 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/02/23 00:10:26 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/02/23 16:12:54 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,4 @@
 void	ft_error(char *message)
 {
 	write(2, message, ft_strlen(message));
-	exit(1);
 }
