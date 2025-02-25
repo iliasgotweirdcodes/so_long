@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 18:22:49 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/02/24 15:39:49 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/02/25 14:08:01 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,19 @@
 #include "gnl/get_next_line.h"
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10
+# define BUFFER_SIZE 10
 # endif
 
 typedef struct s_map
 {
+	char	**map;
 	int		width;
 	int		height;
 	int 	player;
 	int		exit;
 	int		collectible;
-	char	**map;
+	int 	player_x;
+	int 	player_y;
 }	t_map;
 
 char	*get_next_line(int fd);
@@ -46,3 +48,5 @@ void ft_check_walls(char **map);
 void ft_free(char **str);
 void ft_file(char *file);
 int ft_strcmp(char *s1, char *s2);
+void    ft_check_path(char **map);
+void ft_free_map(char **array, t_map *map);

@@ -6,7 +6,7 @@ RM = rm -f
 LIBS = -lmlx -framework OpenGL -framework AppKit
 
 SRC =  parsing.c gnl/get_next_line.c gnl/get_next_line_utils.c ft_split.c error.c map.c ft_strcmp.c \
-		read_map.c free.c valid_file.c\
+		read_map.c free.c valid_file.c path.c\
 
 OBJ = $(SRC:.c=.o)
 all: $(NAME)

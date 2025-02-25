@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 00:11:45 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/02/24 15:39:13 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/02/24 21:54:24 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_is_rectangular(char **map)
 	{
 		if ((int)ft_strlen(map[i]) != len)
 		{
-			ft_error("Error: Map is not rectangular.\n");
+			ft_error("Error: Map is not rectangular or Empty line\n");
 			exit (1);
 		}
 		i++;
@@ -36,9 +36,9 @@ void	ft_validate_map(char **map)
 {
 	int i = 0;
 	int j = 0;
-	int player = 0;
-	int exitt = 0;
-	int collectible = 0;
+	int p = 0;
+	int e = 0;
+	int c = 0;
 
 	while (map[i])
 	{
@@ -46,16 +46,16 @@ void	ft_validate_map(char **map)
 		while (map[i][j])
 		{
 			if (map[i][j] == 'P')
-				player++;
+				p++;
 			else if (map[i][j] == 'E')
-				exitt++;
+				e++;
 			else if (map[i][j] == 'C')
-				collectible++;
+				c++;
 			j++;
 		}
 		i++;
 	}
-	if (player != 1 || exitt != 1 || collectible < 1)
+	if (p != 1 || e != 1 || c < 1)
 	{
 		ft_error("Error: map should contains only one 'P' and 'E' , and not less than one 'C'\n");
 		exit (1);
@@ -116,4 +116,3 @@ void ft_check_walls(char **map)
 		exit(1);
 	}
 }
-

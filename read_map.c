@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 16:10:50 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/02/24 15:36:09 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/02/24 16:54:50 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@ char	**ft_read_map(char *filename)
 	while ((line = get_next_line(fd)) && i < len)
 		map[i++] = line;
 	map[i] = NULL;
-	close(fd);
 	if (i == 0)
 	{
-		ft_error("Error: Empty map file.\n");
-		return (ft_free(map), NULL);
+		ft_error("Error: Empty map.\n");
+		return ((close(fd)), NULL);
 	}
+	close(fd);
 	return (map);
 }
