@@ -1,7 +1,7 @@
 
 NAME = so_long
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror 
 RM = rm -f
 LIBS = -lmlx -framework OpenGL -framework AppKit
 

@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 00:11:45 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/02/26 00:10:35 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/02/26 13:42:44 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,7 @@ int	ft_is_rectangular(t_map *map)
 	while (map->map[i])
 	{
 		if ((int)ft_strlen(map->map[i]) != len)
-		{
-			ft_error("Error: Map is not rectangular or Empty line\n");
-			exit (1);
-		}
+			ft_error_exit("Error: Map is not rectangular or Empty line\n");
 		i++;
 	}
 	return (1);
@@ -34,12 +31,13 @@ int	ft_is_rectangular(t_map *map)
 
 void	ft_validate_map(t_map *map)
 {
-	int i = 0;
-	int j = 0;
-	int p = 0;
-	int e = 0;
-	int c = 0;
+	int i;
+	int j;
+	int p ;
+	int e;
+	int c;
 
+	(1) && (i = 0, p = 0, e = 0, c = 0);
 	while (map->map[i])
 	{
 		j = 0;
@@ -56,10 +54,7 @@ void	ft_validate_map(t_map *map)
 		i++;
 	}
 	if (p != 1 || e != 1 || c < 1)
-	{
-		ft_error("Error: in map elements \n");
-		exit (1);
-	}
+		ft_error_exit("Error: Map is missing player, exit or collectible.\n");
 }
 
 void	ft_check_chars(t_map *map)
@@ -75,10 +70,7 @@ void	ft_check_chars(t_map *map)
 		{
 			if (map->map[i][j] != '1' && map->map[i][j] != '0' && map->map[i][j] != 'C'
 				&& map->map[i][j] != 'P' && map->map[i][j] != 'E' && map->map[i][j] != '\n')
-			{
-				ft_error("Error: Invalid character in map.\n");
-				exit(1);
-			}
+				ft_error_exit("Error: Invalid character in map.\n");
 			j++;
 		}
 		i++;
@@ -87,32 +79,25 @@ void	ft_check_chars(t_map *map)
 
 void	ft_check_walls(t_map *map)
 {
-	int i = 0;
-	int j = 0;
+	int i;
+	int j;
+
+	(1) && (i = 0, j = 0);
 	while(map->map[i] && map->map[i][j] == '1')
 		j++;
 	if ((int)(ft_strlen(map->map[i]) - 1) != j)
-	{
-		ft_error("Error: Map is not surrounded by walls.\n");
-		exit(1);
-	}
+		ft_error_exit("Error: Map is not surrounded by walls.\n");
 	i++;
 	j--;
 	while(map->map[i + 1])
 	{
 		if ( map->map[i][0] != '1' || map->map[i][j] != '1')
-		{
-			ft_error("Error: Map is not surrounded by walls.\n");
-			exit(1);
-		}
+			ft_error_exit("Error: Map is not surrounded by walls.\n");
 		i++;
 	}
 	j = 0;
 	while(map->map[i] && map->map[i][j] == '1')
 		j++;
 	if ((int)(ft_strlen(map->map[i]) - 1) != j)
-	{
-		ft_error("Error: Map is not surrounded by walls.\n");
-		exit (1);
-	}
+		ft_error_exit("Error: Map is not surrounded by walls.\n");
 }

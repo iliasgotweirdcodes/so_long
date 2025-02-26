@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 16:10:50 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/02/25 23:59:22 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/02/26 17:55:53 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int count_map(int fd)
 		free(str);
 		str = get_next_line(fd);
 	}
-	// free(str);
 	return (len);
 }
 void close_open_fd(int fd , char *filename)

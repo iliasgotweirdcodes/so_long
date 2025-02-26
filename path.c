@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:06:45 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/02/25 22:59:59 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/02/26 18:06:51 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,8 @@ void    ft_check_path(t_map *map)
             if (map->map[j][k] == 'C' || map->map[j][k] == 'E')
                 if (cmap[j][k] != 'F')
                 {
-                    ft_error("Error : Invalid Path in Map\n");
-                    exit (1);
+                    ft_free(cmap);
+                    ft_error_exit("Error: invalid path.\n");
                 }
         }
     }
