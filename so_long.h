@@ -6,9 +6,12 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 18:22:49 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/02/25 14:08:01 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/02/25 23:54:59 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef SO_LONG_H
+#define SO_LONG_H
 
 #include <mlx.h>
 #include <fcntl.h>
@@ -40,13 +43,18 @@ size_t	ft_strlen(char *s);
 char	*ft_strchr(char *s, int c);
 char	**ft_split(char *s, char c);
 void	ft_error(char *message);
-char	**ft_read_map(char *filename);
-int	ft_is_rectangular(char **map);
-void	ft_validate_map(char **map);
-void ft_check_chars(char **map);
-void ft_check_walls(char **map);
+char	**ft_read_map(char *filename, t_map *map);
+int	ft_is_rectangular(t_map *map);
+void	ft_validate_map(t_map *map);
+void ft_check_chars(t_map *map);
+void ft_check_walls(t_map *map);
 void ft_free(char **str);
+void	ft_free_struct(t_map *map);
 void ft_file(char *file);
 int ft_strcmp(char *s1, char *s2);
-void    ft_check_path(char **map);
-void ft_free_map(char **array, t_map *map);
+void    ft_check_path(t_map *map);
+void	ft_set_map(t_map *map);
+int map_width(char **map);
+char **ft_parsing(t_map *map, char **av);
+
+#endif

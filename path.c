@@ -6,13 +6,13 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:06:45 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/02/25 00:46:59 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/02/25 22:59:59 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char    **dup_map(char **map, int rows)
+char    **ft_dup_map(char **map, int rows)
 {
     char    **cmap;
     int        i;
@@ -37,76 +37,66 @@ char    **dup_map(char **map, int rows)
     return (cmap);
 }
 
-void    flood_fill(char **map, int x, int y, int rows, int cols)
+void    flood_fill(char **cmap, int x, int y, t_map *map)
 {
-    if (x >= rows || y >= cols || x < 0 || y < 0)
+    if (x >= map->width || y >= map->height || x < 0 || y < 0)
         return ;
-    if (map[y][x] == '1' || map[y][x] == 'F')
+    if (cmap[y][x] == '1' || cmap[y][x] == 'F')
         return ;
-    map[y][x] = 'F';
-    flood_fill(map, x + 1, y, rows, cols);
-    flood_fill(map, x - 1, y, rows, cols);
-    flood_fill(map, x, y + 1, rows, cols);
-    flood_fill(map, x, y - 1, rows, cols);
+    cmap[y][x] = 'F';
+    flood_fill(cmap, x + 1, y, map);
+    flood_fill(cmap, x - 1, y, map);
+    flood_fill(cmap, x, y + 1, map);
+    flood_fill(cmap, x, y - 1, map);
 }
 
-int    *find_player(char **map)
+void    ft_find_player(t_map *map)
 {
     int    i;
     int    j;
-    int    *pos;
 
     i = 0;
-    pos = malloc(sizeof(int) * 2);
-    if (!pos)
-        return (NULL);
-    while (map[i])
+    while (map->map[i])
     {
         j = 0;
-        while (map[i][j])
+        while (map->map[i][j])
         {
-            if (map[i][j] == 'P')
+            if (map->map[i][j] == 'P')
             {
-                pos[0] = i;
-                pos[1] = j;
-                return (pos);
+                map->player_x = j;
+                map->player_y = i;
             }
             j++;
         }
         i++;
     }
-    free(pos);
-    return (NULL);
 }
 
-void    ft_check_path(char **map)
+void    ft_check_path(t_map *map)
 {
     char    **cmap;
-    int        *player;
     int        k;
     int        i;
     int        j;
 
-    player = find_player(map);
-    if (!player)
-        exit(1);
+    ft_find_player(map);
     i = -1;
-    while (map[++i]);
-    cmap = dup_map(map, i);
-    flood_fill(cmap, player[1], player[0], ft_strlen(map[0]), i);
-
+    while (map->map[++i]);
+    cmap = ft_dup_map(map->map, i);
+    flood_fill(cmap, map->player_x, map->player_y, map);
     j = -1;
-    while (map[++j])
+    while (map->map[++j])
     {
         k = -1;
-        while (map[j][++k])
+        while (map->map[j][++k])
         {
-            if (map[j][k] == 'C' || map[j][k] == 'E')
+            if (map->map[j][k] == 'C' || map->map[j][k] == 'E')
                 if (cmap[j][k] != 'F')
                 {
-                    ft_error("Invalid Path\n");
-                    exit(1);
+                    ft_error("Error : Invalid Path in Map\n");
+                    exit (1);
                 }
         }
     }
+    ft_free(cmap);
 }
