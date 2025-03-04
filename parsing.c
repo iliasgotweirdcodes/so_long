@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 18:22:37 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/02/26 18:07:05 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/04 01:50:38 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ int	ft_parsing(t_map **map, char **av)
 	ft_check_chars(*map);
 	ft_check_walls(*map);
 	ft_check_path(*map);
-	free(*map);
+	// free(*map);
 	return (1);
 }
