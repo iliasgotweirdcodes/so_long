@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   valid_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/22 18:22:37 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/04 01:50:38 by ilel-hla         ###   ########.fr       */
+/*   Created: 2025/02/24 14:26:59 by ilel-hla          #+#    #+#             */
+/*   Updated: 2025/03/05 03:33:43 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
-int	ft_parsing(t_map **map, char **av)
+void	ft_file(char *file)
 {
-	ft_file(av[1]);
-	*map = malloc(sizeof(t_map));
-	if (!*map)
-		return (0);
-	ft_set_map(*map);
-	(*map)->map = ft_read_map(av[1], *map);
-	if (!(*map)->map)
+	int	len;
+
+	len = ft_strlen(file);
+	if (len < 4 || ft_strcmp(&file[len - 4], ".ber") != 0)
 	{
-		free(*map);
-		return (0);
+		ft_error("Error\nFile name must end with .ber\n");
+		exit(1);
 	}
-	ft_validate_map(*map);
-	ft_is_rectangular(*map);
-	ft_check_chars(*map);
-	ft_check_walls(*map);
-	ft_check_path(*map);
-	// free(*map);
-	return (1);
 }

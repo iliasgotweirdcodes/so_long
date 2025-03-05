@@ -1,23 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/23 14:49:21 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/02/24 15:27:11 by ilel-hla         ###   ########.fr       */
+/*   Created: 2025/02/22 18:22:37 by ilel-hla          #+#    #+#             */
+/*   Updated: 2025/03/05 03:33:18 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
-int ft_strcmp(char *s1, char *s2)
+int	ft_parsing(t_map **map, char **av)
 {
-	int i;
-
-	i = 0;
-	while (s1[i] && s2[i] && s1[i] == s2[i])
-		i++;
-	return (s1[i] - s2[i]);
+	ft_file(av[1]);
+	*map = malloc(sizeof(t_map));
+	if (!*map)
+		return (0);
+	ft_set_map(*map);
+	(*map)->map = ft_read_map(av[1], *map);
+	if (!(*map)->map)
+	{
+		free(*map);
+		return (0);
+	}
+	ft_validate_map(*map);
+	ft_is_rectangular(*map);
+	ft_check_chars(*map);
+	ft_check_walls(*map);
+	ft_check_path(*map);
+	return (1);
 }

@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   valid_file.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/24 14:26:59 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/02/24 23:05:35 by ilel-hla         ###   ########.fr       */
+/*   Created: 2025/03/04 22:16:24 by ilel-hla          #+#    #+#             */
+/*   Updated: 2025/03/05 03:32:57 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
-void	ft_file(char *file)
+void	ft_putchar(char c)
 {
-	int	len;
+	write(1, &c, 1);
+}
 
-	len = ft_strlen(file);
-	if (len < 4 || ft_strcmp(&file[len - 4], ".ber") != 0)
+void	ft_putnbr(int nb)
+{
+	if (nb >= 10)
 	{
-		ft_error( "Error: File name must end with .ber\n");
-		exit(1);
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
 	}
+	else
+		ft_putchar(nb + '0');
 }

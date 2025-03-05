@@ -5,8 +5,9 @@ CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 LIBS = -lmlx -framework OpenGL -framework AppKit
 
-SRC =  parsing.c gnl/get_next_line.c gnl/get_next_line_utils.c ft_split.c error.c map.c ft_strcmp.c \
-		read_map.c free.c valid_file.c path.c set_map.c so_long.c game.c moves.c \
+SRC =  mandatory/parsing.c gnl/get_next_line.c gnl/get_next_line_utils.c mandatory/error.c mandatory/map.c mandatory/ft_strcmp.c \
+		mandatory/read_map.c mandatory/free.c mandatory/valid_file.c mandatory/path.c mandatory/set_map.c \
+		mandatory/so_long.c mandatory/game.c mandatory/moves.c mandatory/ft_putnbr.c mandatory/helpers.c \
 
 OBJ = $(SRC:.c=.o)
 
