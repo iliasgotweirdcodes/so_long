@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/22 18:22:49 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/06 16:16:24 by ilel-hla         ###   ########.fr       */
+/*   Created: 2025/03/06 23:40:21 by ilel-hla          #+#    #+#             */
+/*   Updated: 2025/03/07 04:31:13 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include <mlx.h>
 # include <fcntl.h>
@@ -19,7 +20,6 @@
 # include <unistd.h>
 # include <stdio.h>
 # include "gnl/get_next_line.h"
-
 
 # define TILE_SIZE 32
 
@@ -58,11 +58,21 @@ typedef struct s_game
 	void	*img_floor;
 	void	*img_collectible;
 	void	*img_exit;
+	void	*img_exit_open;
+	void	*img_enemy;
 	int		player_x;
 	int		player_y;
 	int		moves;
 	t_map	*map;
 }	t_game;
+
+typedef struct s_char
+{
+	char e;
+	char c;
+	char p;
+	char x;
+}	t_char;
 
 char	*get_next_line(int fd);
 char	*ft_strjoin(char *s1, char *s2);
@@ -96,4 +106,8 @@ void	ft_exit(t_map *map, t_game *game);
 void	destroy_images(t_game *game);
 void	ft_win(t_game *game);
 void	ft_error_free(t_map *map, char *message);
+char	*ft_itoa(int n);
+void	ft_put_str_win(t_game *game);
+void	ft_enemy(t_map *map, t_game *game, int x, int y);
+
 #endif

@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   moves.c                                            :+:      :+:    :+:   */
+/*   moves_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/03 01:04:57 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/06 23:23:24 by ilel-hla         ###   ########.fr       */
+/*   Created: 2025/03/06 23:55:17 by ilel-hla          #+#    #+#             */
+/*   Updated: 2025/03/07 04:31:24 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
 int	ft_valid_move(t_map *map, int x, int y)
 {
 	if (!map || !map->map)
 		return (0);
-	if (x < 0 || y < 0 || x >= map->width || y >= map->height)
+	if (x < 0 || y < 0 || x > map->width || y > map->height)
 		return (0);
 	if (!map->map[y])
 		return (0);
@@ -58,15 +58,7 @@ void	ft_collectible_exit(t_game *game, t_map *map, int x, int y)
 	}
 	if (game->map->collectible == 0)
 	{
-		// mlx_destroy_image(game->mlx, game->img_exit);
-		// game->img_exit = mlx_xpm_file_to_image(game->mlx,
-		// 		"textures/opened_exit.xpm",
-		// 		&game->map->width, &game->map->height);
-		// if (!game->img_exit)
-		// {
-		// 	ft_error_exit("Error\nFailed to load texture\n");
-		// }
-		mlx_put_image_to_window(game->mlx, game->win, game->img_exit,
+		mlx_put_image_to_window(game->mlx, game->win, game->img_exit_open,
 			map->exit_x * TILE_SIZE, map->exit_y * TILE_SIZE);
 		if (map->map[y][x] == 'E' && game->map->collectible == 0)
 			ft_win(game);
@@ -87,9 +79,7 @@ void	ft_move(t_game *game, t_map *map, int dx, int dy)
 		game->moves++;
 		ft_update_player(game, map, x, y);
 		ft_collectible_exit(game, map, x, y);
-		write(1, "Move: ", 7);
-		ft_putnbr(game->moves);
-		write(1, "\n", 1);
+		ft_enemy(map, game, x, y);
 	}
 	else
 		return ;
@@ -112,5 +102,6 @@ int	ft_keypress(int key, t_game *game)
 		mlx_destroy_window(game->mlx, game->win);
 		exit(0);
 	}
+	ft_put_str_win(game);
 	return (0);
 }

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game.c                                             :+:      :+:    :+:   */
+/*   game_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/02 16:20:23 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/06 23:47:45 by ilel-hla         ###   ########.fr       */
+/*   Created: 2025/03/06 23:54:41 by ilel-hla          #+#    #+#             */
+/*   Updated: 2025/03/07 03:16:38 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
 void	destroy_images(t_game *game)
 {
@@ -66,8 +66,13 @@ void	ft_load_img(t_game *game)
 			"textures/blood.xpm", &game->map->width, &game->map->height);
 	game->img_exit = mlx_xpm_file_to_image(game->mlx,
 			"textures/closed_exit.xpm", &game->map->width, &game->map->height);
+	game->img_exit_open = mlx_xpm_file_to_image(game->mlx,
+			"textures/opened_exit.xpm", &game->map->width, &game->map->height);
+	game->img_enemy = mlx_xpm_file_to_image(game->mlx,
+			"textures/enemy.xpm", &game->map->width, &game->map->height);
 	if (!game->img_player || !game->img_wall || !game->img_floor
-		|| !game->img_collectible || !game->img_exit)
+		|| !game->img_collectible || !game->img_exit || !game->img_exit_open
+		|| !game->img_enemy)
 	{
 		destroy_images(game);
 		free(game);
@@ -95,6 +100,9 @@ void	ft_decide_comp(t_game *game, int x, int y)
 	else if (game->map->map[y][x] == 'P')
 		mlx_put_image_to_window(game->mlx, game->win, game->img_player,
 			x * TILE_SIZE, y * TILE_SIZE);
+	else if (game->map->map[y][x] == 'X')
+		mlx_put_image_to_window(game->mlx, game->win, game->img_enemy,
+			x * TILE_SIZE, y * TILE_SIZE);
 }
 
 void	ft_draw_map(t_game *game)
@@ -103,6 +111,7 @@ void	ft_draw_map(t_game *game)
 	int	y;
 
 	y = 0;
+	game->moves = 0;
 	ft_load_img(game);
 	while (game->map->map[y])
 	{
@@ -116,4 +125,5 @@ void	ft_draw_map(t_game *game)
 		}
 		y++;
 	}
+	ft_put_str_win(game);
 }
