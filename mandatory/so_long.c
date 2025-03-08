@@ -6,18 +6,17 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 18:24:42 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/06 23:29:13 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/08 17:08:31 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	f()
-{
-	// system("lsof -c so_long");
-	system("leaks -q so_long");
-}
-
+// void	f()
+// {
+// 	// system("lsof -c so_long");
+// 	system("leaks -q so_long");
+// }
 int	close_window(t_game *game)
 {
 	mlx_destroy_window(game->mlx, game->win);
@@ -34,7 +33,6 @@ void	error(t_map *map, t_game *game)
 
 int	main(int ac, char **av)
 {
-
 	t_map	*map;
 	t_game	*game;
 
@@ -50,6 +48,7 @@ int	main(int ac, char **av)
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		error(map, game);
+	game->moves = 0;
 	ft_start_game(game, av[1]);
 	ft_draw_map(game);
 	mlx_hook(game->win, 2, 0, ft_keypress, game);

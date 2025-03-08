@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 16:20:23 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/06 23:47:45 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/08 17:03:31 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	ft_start_game(t_game *game, char *filename)
 		ft_error_exit("Error\nFile does not exist.\n");
 	if (!game->mlx)
 	{
-		destroy_images(game);
 		close (fd);
 		free(game);
 		ft_error_exit("Error\nFailed to initialize MLX\n");
@@ -47,7 +46,6 @@ void	ft_start_game(t_game *game, char *filename)
 	if (!game->win)
 	{
 		close (fd);
-		destroy_images(game);
 		free(game);
 		ft_error_exit("Error\nFailed to create window\n");
 	}

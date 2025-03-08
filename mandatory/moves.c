@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 01:04:57 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/06 23:23:24 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/08 17:08:40 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,6 @@ void	ft_collectible_exit(t_game *game, t_map *map, int x, int y)
 	}
 	if (game->map->collectible == 0)
 	{
-		// mlx_destroy_image(game->mlx, game->img_exit);
-		// game->img_exit = mlx_xpm_file_to_image(game->mlx,
-		// 		"textures/opened_exit.xpm",
-		// 		&game->map->width, &game->map->height);
-		// if (!game->img_exit)
-		// {
-		// 	ft_error_exit("Error\nFailed to load texture\n");
-		// }
 		mlx_put_image_to_window(game->mlx, game->win, game->img_exit,
 			map->exit_x * TILE_SIZE, map->exit_y * TILE_SIZE);
 		if (map->map[y][x] == 'E' && game->map->collectible == 0)
@@ -107,9 +99,9 @@ int	ft_keypress(int key, t_game *game)
 		ft_move(game, game->map, 1, 0);
 	else if (key == KEY_ESC)
 	{
+		mlx_destroy_window(game->mlx, game->win);
 		ft_free(game->map->map);
 		free(game);
-		mlx_destroy_window(game->mlx, game->win);
 		exit(0);
 	}
 	return (0);
