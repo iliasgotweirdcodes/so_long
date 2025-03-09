@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 23:56:06 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/07 04:37:14 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/09 01:54:15 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	ft_put_str_win(t_game *game)
 	mlx_string_put(game->mlx, game->win, 12, 6, 16777215, string);
 	free(string);
 }
-void	ft_enemy(t_map *map, t_game *game, int x, int y)
+void	ft_found_enemy(t_map *map, t_game *game, int x, int y)
 {
 	if (game->map->map[y][x] == 'X')
 	{

@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 23:54:41 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/07 03:16:38 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/09 03:33:31 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	ft_start_game(t_game *game, char *filename)
 		ft_error_exit("Error\nFile does not exist.\n");
 	if (!game->mlx)
 	{
-		destroy_images(game);
 		close (fd);
 		free(game);
 		ft_error_exit("Error\nFailed to initialize MLX\n");
@@ -47,7 +46,6 @@ void	ft_start_game(t_game *game, char *filename)
 	if (!game->win)
 	{
 		close (fd);
-		destroy_images(game);
 		free(game);
 		ft_error_exit("Error\nFailed to create window\n");
 	}
@@ -68,18 +66,34 @@ void	ft_load_img(t_game *game)
 			"textures/closed_exit.xpm", &game->map->width, &game->map->height);
 	game->img_exit_open = mlx_xpm_file_to_image(game->mlx,
 			"textures/opened_exit.xpm", &game->map->width, &game->map->height);
-	game->img_enemy = mlx_xpm_file_to_image(game->mlx,
-			"textures/enemy.xpm", &game->map->width, &game->map->height);
+	game->img_enemy[0] = mlx_xpm_file_to_image(game->mlx, "textures/enemy0.xpm",
+			&game->map->width, &game->map->height);
+	game->img_enemy[1] = mlx_xpm_file_to_image(game->mlx, "textures/enemy1.xpm",
+			&game->map->width, &game->map->height);
+	game->img_enemy[2] = mlx_xpm_file_to_image(game->mlx, "textures/enemy2.xpm",
+			&game->map->width, &game->map->height);
+	game->img_enemy[3] = mlx_xpm_file_to_image(game->mlx, "textures/enemy3.xpm",
+			&game->map->width, &game->map->height);
+	game->img_enemy[4] = mlx_xpm_file_to_image(game->mlx, "textures/enemy4.xpm",
+			&game->map->width, &game->map->height);
 	if (!game->img_player || !game->img_wall || !game->img_floor
 		|| !game->img_collectible || !game->img_exit || !game->img_exit_open
-		|| !game->img_enemy)
+		|| !game->img_enemy[0] || !game->img_enemy[1] || !game->img_enemy[2]
+		|| !game->img_enemy[3] || !game->img_enemy[4])
 	{
 		destroy_images(game);
 		free(game);
 		ft_error_exit("Error\nFailed to load textures\n");
 	}
 }
-
+void enemy_render(t_game *game, int x, int y)
+{
+	mlx_put_image_to_window(game->mlx, game->win, game->img_floor,
+		x * TILE_SIZE, y * TILE_SIZE);
+	mlx_put_image_to_window(game->mlx, game->win, game->img_enemy[game->frame % 5],
+		x * TILE_SIZE, y * TILE_SIZE);
+	ft_enemy(game);
+}
 void	ft_decide_comp(t_game *game, int x, int y)
 {
 	if (game->map->map[y][x] == '1')
@@ -101,8 +115,8 @@ void	ft_decide_comp(t_game *game, int x, int y)
 		mlx_put_image_to_window(game->mlx, game->win, game->img_player,
 			x * TILE_SIZE, y * TILE_SIZE);
 	else if (game->map->map[y][x] == 'X')
-		mlx_put_image_to_window(game->mlx, game->win, game->img_enemy,
-			x * TILE_SIZE, y * TILE_SIZE);
+		enemy_render(game, x, y);
+
 }
 
 void	ft_draw_map(t_game *game)

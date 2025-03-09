@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 23:57:02 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/07 00:13:23 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/07 22:51:27 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,9 @@ void	ft_check_path(t_map *map)
 	int		j;
 
 	ft_find_player(map);
-	i = -1;
+	i = 0;
 	while (map->map[i])
-		++i;
+		i++;
 	cmap = ft_dup_map(map->map, i);
 	flood_fill(cmap, map->player_x, map->player_y, map);
 	j = -1;

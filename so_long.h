@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 18:22:49 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/06 16:16:24 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/08 17:07:52 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <unistd.h>
 # include <stdio.h>
 # include "gnl/get_next_line.h"
-
 
 # define TILE_SIZE 32
 

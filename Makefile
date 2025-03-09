@@ -13,7 +13,7 @@ SRC =  mandatory/parsing.c gnl/get_next_line.c gnl/get_next_line_utils.c mandato
 
 SRC_BONUS = bonus/parsing_bonus.c gnl/get_next_line.c gnl/get_next_line_utils.c bonus/error_bonus.c bonus/map_bonus.c bonus/ft_strcmp_bonus.c \
 		bonus/read_map_bonus.c bonus/free_bonus.c bonus/valid_file_bonus.c bonus/path_bonus.c bonus/set_map_bonus.c bonus/ft_itoa_bonus.c \
-		bonus/so_long_bonus.c bonus/game_bonus.c bonus/moves_bonus.c bonus/ft_putnbr_bonus.c bonus/helpers_bonus.c \
+		bonus/so_long_bonus.c bonus/game_bonus.c bonus/moves_bonus.c  bonus/helpers_bonus.c bonus/enemy_animation.c \
 
 OBJ = $(SRC:.c=.o)
 OBJ_BONUS = $(SRC_BONUS:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 23:55:17 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/07 04:31:24 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/09 02:10:00 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,12 @@ void	ft_move(t_game *game, t_map *map, int dx, int dy)
 		game->moves++;
 		ft_update_player(game, map, x, y);
 		ft_collectible_exit(game, map, x, y);
-		ft_enemy(map, game, x, y);
+		ft_found_enemy(map, game, x, y);
 	}
 	else
 		return ;
 }
+
 
 int	ft_keypress(int key, t_game *game)
 {
@@ -97,9 +98,9 @@ int	ft_keypress(int key, t_game *game)
 		ft_move(game, game->map, 1, 0);
 	else if (key == KEY_ESC)
 	{
+		mlx_destroy_window(game->mlx, game->win);
 		ft_free(game->map->map);
 		free(game);
-		mlx_destroy_window(game->mlx, game->win);
 		exit(0);
 	}
 	ft_put_str_win(game);

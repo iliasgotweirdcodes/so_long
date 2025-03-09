@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 23:40:21 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/07 04:31:13 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/09 03:31:57 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_map
 	int		exit_y;
 	int		player_x;
 	int		player_y;
+	int		enemy;
 }	t_map;
 
 typedef struct s_game
@@ -59,10 +60,15 @@ typedef struct s_game
 	void	*img_collectible;
 	void	*img_exit;
 	void	*img_exit_open;
-	void	*img_enemy;
+	void	*img_enemy[5];
 	int		player_x;
 	int		player_y;
+	int		enemy_x;
+	int		enemy_y;
 	int		moves;
+	int		frame;
+	int		cycle;
+	int		enemy_count;
 	t_map	*map;
 }	t_game;
 
@@ -100,7 +106,6 @@ void	ft_load_img(t_game *game);
 void	ft_decide_comp(t_game *game, int x, int y);
 void	ft_draw_map(t_game *game);
 int		ft_keypress(int key, t_game *game);
-void	ft_putnbr(int nb);
 void	ft_player(t_game *game, t_map *map);
 void	ft_exit(t_map *map, t_game *game);
 void	destroy_images(t_game *game);
@@ -108,6 +113,8 @@ void	ft_win(t_game *game);
 void	ft_error_free(t_map *map, char *message);
 char	*ft_itoa(int n);
 void	ft_put_str_win(t_game *game);
-void	ft_enemy(t_map *map, t_game *game, int x, int y);
+void	ft_found_enemy(t_map *map, t_game *game, int x, int y);
+int    ft_animate(t_game *game);
+void	ft_enemy(t_game *game);
 
 #endif
