@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 23:57:02 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/07 22:51:27 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/10 23:26:56 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	flood_fill(char **cmap, int x, int y, t_map *map)
 {
 	if (x >= map->width || y >= map->height || x < 0 || y < 0)
 		return ;
-	if (cmap[y][x] == '1' || cmap[y][x] == 'F')
+	if (cmap[y][x] == '1' || cmap[y][x] == 'F' || cmap[y][x] == 'X')
 		return ;
 	cmap[y][x] = 'F';
 	flood_fill(cmap, x + 1, y, map);
@@ -72,8 +72,10 @@ void	ft_find_player(t_map *map)
 	}
 }
 
-void	ft_invalidpath(char **str)
+void	ft_invalidpath(char **str, t_map *map)
 {
+	ft_free(map->map);
+	free(map);
 	ft_free(str);
 	ft_error_exit("Error\ninvalid path.\n");
 }
@@ -100,7 +102,7 @@ void	ft_check_path(t_map *map)
 			if (map->map[j][k] == 'C' || map->map[j][k] == 'E')
 			{
 				if (cmap[j][k] != 'F')
-					ft_invalidpath(cmap);
+					ft_invalidpath(cmap, map);
 			}
 		}
 	}

@@ -6,19 +6,17 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 18:24:42 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/08 17:08:31 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/11 01:21:28 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-// void	f()
-// {
-// 	// system("lsof -c so_long");
-// 	system("leaks -q so_long");
-// }
 int	close_window(t_game *game)
 {
+	ft_free(game->map->map);
+	free(game->map);
+	free(game);
 	mlx_destroy_window(game->mlx, game->win);
 	exit(0);
 }
@@ -26,8 +24,8 @@ int	close_window(t_game *game)
 void	error(t_map *map, t_game *game)
 {
 	ft_free(map->map);
-	free (game);
 	free(map);
+	free (game);
 	ft_error_exit("Error\nFailed to initialize MLX\n");
 }
 
@@ -36,7 +34,6 @@ int	main(int ac, char **av)
 	t_map	*map;
 	t_game	*game;
 
-	// atexit(f);
 	if (ac != 2)
 		ft_error_exit("Error\nInvalid number of arguments.\n");
 	(1) && (map = NULL, game = malloc(sizeof(t_game)));

@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 16:10:50 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/06 23:20:46 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/10 23:11:41 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	close_open_fd(int fd, char *filename)
 	fd = open(filename, O_RDONLY);
 }
 
-void	helpme(int fd, t_map *map)
+void	ft_free_close(int fd, t_map *map)
 {
 	close(fd);
 	ft_free(map->map);
@@ -87,6 +87,6 @@ char	**ft_read_map(char *filename, t_map *map)
 	map->width = map_width(cmap);
 	cmap[i] = NULL;
 	if (!cmap[0])
-		helpme(fd, map);
+		ft_free_close(fd, map);
 	return (close(fd), cmap);
 }

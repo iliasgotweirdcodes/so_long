@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 18:22:49 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/08 17:07:52 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/11 01:29:51 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h>
 # include "gnl/get_next_line.h"
 
 # define TILE_SIZE 32
@@ -32,7 +31,6 @@
 # define KEY_RIGHT 124
 # define KEY_ESC 53
 # define KEY_X 17
-
 
 typedef struct s_map
 {
@@ -82,7 +80,6 @@ void	ft_check_path(t_map *map);
 void	ft_set_map(t_map *map);
 int		map_width(char **map);
 int		ft_parsing(t_map **map, char **av);
-int		map_width(char **map);
 int		count_map(int fd);
 void	ft_start_game(t_game *game, char *filename);
 void	ft_load_img(t_game *game);
@@ -95,4 +92,5 @@ void	ft_exit(t_map *map, t_game *game);
 void	destroy_images(t_game *game);
 void	ft_win(t_game *game);
 void	ft_error_free(t_map *map, char *message);
+
 #endif

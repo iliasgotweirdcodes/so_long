@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 16:20:23 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/08 17:03:31 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/10 23:04:03 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void	ft_start_game(t_game *game, char *filename)
 	if (!game->win)
 	{
 		close (fd);
+		ft_free(game->map->map);
+		free(game->map);
 		free(game);
 		ft_error_exit("Error\nFailed to create window\n");
 	}
@@ -68,6 +70,8 @@ void	ft_load_img(t_game *game)
 		|| !game->img_collectible || !game->img_exit)
 	{
 		destroy_images(game);
+		ft_free(game->map->map);
+		free(game->map);
 		free(game);
 		ft_error_exit("Error\nFailed to load textures\n");
 	}

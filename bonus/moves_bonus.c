@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 23:55:17 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/09 02:10:00 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/11 01:34:01 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ void	ft_move(t_game *game, t_map *map, int dx, int dy)
 		return ;
 }
 
-
 int	ft_keypress(int key, t_game *game)
 {
 	if (key == KEY_W || key == KEY_UP)
@@ -100,6 +99,8 @@ int	ft_keypress(int key, t_game *game)
 	{
 		mlx_destroy_window(game->mlx, game->win);
 		ft_free(game->map->map);
+		free(game->map);
+		free(game->enemies);
 		free(game);
 		exit(0);
 	}

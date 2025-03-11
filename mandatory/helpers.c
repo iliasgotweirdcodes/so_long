@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 01:32:26 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/08 17:05:28 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/10 22:58:45 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,8 @@ void	ft_win(t_game *game)
 	write(1, "\n", 1);
 	write(1, "\033[1;32mYou won!\033[0m\n", 21);
 	mlx_destroy_window(game->mlx, game->win);
+	ft_free(game->map->map);
+	free(game->map);
+	free(game);
 	exit(0);
 }

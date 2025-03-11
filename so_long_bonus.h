@@ -6,10 +6,9 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 23:40:21 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/09 03:31:57 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/11 01:32:03 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef SO_LONG_BONUS_H
 # define SO_LONG_BONUS_H
@@ -18,7 +17,6 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h>
 # include "gnl/get_next_line.h"
 
 # define TILE_SIZE 32
@@ -34,7 +32,6 @@
 # define KEY_ESC 53
 # define KEY_X 17
 
-
 typedef struct s_map
 {
 	char	**map;
@@ -49,6 +46,12 @@ typedef struct s_map
 	int		player_y;
 	int		enemy;
 }	t_map;
+
+typedef struct s_enemy
+{
+	int	x;
+	int	y;
+}	t_enemy;
 
 typedef struct s_game
 {
@@ -68,16 +71,17 @@ typedef struct s_game
 	int		moves;
 	int		frame;
 	int		cycle;
-	int		enemy_count;
 	t_map	*map;
+	t_enemy	*enemies;
+	int		enemy_count;
 }	t_game;
 
 typedef struct s_char
 {
-	char e;
-	char c;
-	char p;
-	char x;
+	char	e;
+	char	c;
+	char	p;
+	char	x;
 }	t_char;
 
 char	*get_next_line(int fd);
@@ -99,7 +103,6 @@ void	ft_check_path(t_map *map);
 void	ft_set_map(t_map *map);
 int		map_width(char **map);
 int		ft_parsing(t_map **map, char **av);
-int		map_width(char **map);
 int		count_map(int fd);
 void	ft_start_game(t_game *game, char *filename);
 void	ft_load_img(t_game *game);
@@ -114,7 +117,9 @@ void	ft_error_free(t_map *map, char *message);
 char	*ft_itoa(int n);
 void	ft_put_str_win(t_game *game);
 void	ft_found_enemy(t_map *map, t_game *game, int x, int y);
-int    ft_animate(t_game *game);
+int		ft_animate(t_game *game);
 void	ft_enemy(t_game *game);
+void	ft_enemy_render(t_game *game, int x, int y);
+void	ft_enemy_frames(t_game *game);
 
 #endif
