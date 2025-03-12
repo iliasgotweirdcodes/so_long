@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 18:22:37 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/06 23:15:02 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/12 02:32:42 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	ft_parsing(t_map **map, char **av)
 	(*map)->map = ft_read_map(av[1], *map);
 	if (!(*map)->map)
 		return (free(*map), 0);
+	ft_out_of_screen(*map);
 	ft_validate_map(*map);
 	ft_is_rectangular(*map);
 	ft_check_chars(*map);

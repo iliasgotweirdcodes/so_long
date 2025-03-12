@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 01:32:26 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/10 22:58:45 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/12 16:04:00 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,5 @@ void	ft_win(t_game *game)
 	mlx_destroy_window(game->mlx, game->win);
 	ft_free(game->map->map);
 	free(game->map);
-	free(game);
 	exit(0);
 }

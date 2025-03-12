@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 01:04:57 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/10 23:21:18 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/12 16:03:57 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ int	ft_valid_move(t_map *map, int x, int y)
 {
 	if (!map || !map->map)
 		return (0);
-	if (x < 0 || y < 0 || x >= map->width || y >= map->height)
+	if (x < 0 || y < 0)
+		return (0);
+	if (x > map->width || y > map->height)
 		return (0);
 	if (!map->map[y])
 		return (0);
@@ -102,7 +104,6 @@ int	ft_keypress(int key, t_game *game)
 		mlx_destroy_window(game->mlx, game->win);
 		ft_free(game->map->map);
 		free(game->map);
-		free(game);
 		exit(0);
 	}
 	return (0);

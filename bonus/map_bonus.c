@@ -6,18 +6,12 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 23:55:39 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/09 00:52:09 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/12 17:06:49 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long_bonus.h"
 
-void	ft_error_free(t_map *map, char *message)
-{
-	ft_free(map->map);
-	free(map);
-	ft_error_exit(message);
-}
 
 int	ft_is_rectangular(t_map *map)
 {
@@ -62,7 +56,7 @@ void	ft_validate_map(t_map *map)
 		i++;
 	}
 	if (comp.p != 1 || comp.e != 1 || comp.c < 1 || comp.x < 1)
-		ft_error_free(map, "Error\nMissing map components\n");
+		ft_error_free(map, "Error\nError in map components\n");
 }
 
 void	ft_check_chars(t_map *map)

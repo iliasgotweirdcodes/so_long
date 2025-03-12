@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 23:56:06 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/11 01:33:39 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/12 16:07:58 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void	ft_win(t_game *game)
 	ft_free(game->map->map);
 	free(game->map);
 	free(game->enemies);
-	free(game);
 	write(1, "\033[1;32mYou won!\033[0m\n", 21);
 	exit(0);
 }
@@ -100,7 +99,6 @@ void	ft_found_enemy(t_map *map, t_game *game, int x, int y)
 		ft_free(map->map);
 		free(map);
 		free(game->enemies);
-		free(game);
 		write(2, "\033[1;31mYou lost!\033[0m\n", 22);
 		exit (1);
 	}

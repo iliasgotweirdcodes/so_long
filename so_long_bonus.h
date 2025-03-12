@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 23:40:21 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/11 01:32:03 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/12 17:08:14 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct s_game
 	void	*img_collectible;
 	void	*img_exit;
 	void	*img_exit_open;
+	int		img_demension;
 	void	*img_enemy[5];
 	int		player_x;
 	int		player_y;
@@ -121,5 +122,8 @@ int		ft_animate(t_game *game);
 void	ft_enemy(t_game *game);
 void	ft_enemy_render(t_game *game, int x, int y);
 void	ft_enemy_frames(t_game *game);
+void	ft_collectible_exit(t_game *game, t_map *map, int x, int y);
+void	ft_error_free(t_map *map, char *message);
+void	ft_out_of_screen(t_map *map);
 
 #endif

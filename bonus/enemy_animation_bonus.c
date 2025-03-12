@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   enemy_animation.c                                  :+:      :+:    :+:   */
+/*   enemy_animation_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 00:53:15 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/11 01:31:42 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/12 16:08:11 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 void	ft_enemy_frames(t_game *game)
 {
+	game->img_demension = 32;
 	game->img_enemy[0] = mlx_xpm_file_to_image(game->mlx, "textures/enemy0.xpm",
-			&game->map->width, &game->map->height);
+			&game->img_demension, &game->img_demension);
 	game->img_enemy[1] = mlx_xpm_file_to_image(game->mlx, "textures/enemy1.xpm",
-			&game->map->width, &game->map->height);
+			&game->img_demension, &game->img_demension);
 	game->img_enemy[2] = mlx_xpm_file_to_image(game->mlx, "textures/enemy2.xpm",
-			&game->map->width, &game->map->height);
+			&game->img_demension, &game->img_demension);
 	game->img_enemy[3] = mlx_xpm_file_to_image(game->mlx, "textures/enemy3.xpm",
-			&game->map->width, &game->map->height);
+			&game->img_demension, &game->img_demension);
 	game->img_enemy[4] = mlx_xpm_file_to_image(game->mlx, "textures/enemy4.xpm",
-			&game->map->width, &game->map->height);
+			&game->img_demension, &game->img_demension);
 	if (!game->img_enemy[0] || !game->img_enemy[1] || !game->img_enemy[2]
 		|| !game->img_enemy[3] || !game->img_enemy[4])
 	{
 		destroy_images(game);
-		free(game);
 		ft_error_exit("Error\nFailed to load textures\n");
 	}
 }

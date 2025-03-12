@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 23:57:27 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/06 23:57:54 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/12 17:06:07 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,13 @@ int	count_map(int fd)
 	return (len);
 }
 
-void	close_open_fd(int fd, char *filename)
+void	close_open_fd(int *fd, char *filename)
 {
-	close(fd);
-	fd = open(filename, O_RDONLY);
+	close(*fd);
+	*fd = open(filename, O_RDONLY);
 }
 
-void	helpme(int fd, t_map *map)
+void	ft_free_close(int fd, t_map *map)
 {
 	close(fd);
 	ft_free(map->map);
@@ -71,9 +71,9 @@ char	**ft_read_map(char *filename, t_map *map)
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		ft_error_exit("Error\nFile does not exist.\n");
+		ft_error_free(map, "Error\nFile does not exist.\n");
 	map->height = count_map(fd);
-	close_open_fd(fd, filename);
+	close_open_fd(&fd, filename);
 	cmap = malloc(sizeof(char *) * (map->height + 1));
 	if (!cmap)
 		return (close(fd), free(map), NULL);
@@ -87,6 +87,6 @@ char	**ft_read_map(char *filename, t_map *map)
 	map->width = map_width(cmap);
 	cmap[i] = NULL;
 	if (!cmap[0])
-		helpme(fd, map);
+		ft_free_close(fd, map);
 	return (close(fd), cmap);
 }

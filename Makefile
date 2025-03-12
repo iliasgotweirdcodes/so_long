@@ -9,12 +9,13 @@ LIBS = -lmlx -framework OpenGL -framework AppKit
 
 SRC =  mandatory/parsing.c gnl/get_next_line.c gnl/get_next_line_utils.c mandatory/error.c mandatory/map.c mandatory/ft_strcmp.c \
 		mandatory/read_map.c mandatory/free.c mandatory/valid_file.c mandatory/path.c mandatory/set_map.c \
-		mandatory/so_long.c mandatory/game.c mandatory/moves.c mandatory/ft_putnbr.c mandatory/helpers.c
+		mandatory/so_long.c mandatory/game.c mandatory/moves.c mandatory/ft_putnbr.c mandatory/helpers.c \
+		mandatory/out_screen.c
 
 SRC_BONUS = bonus/parsing_bonus.c gnl/get_next_line.c gnl/get_next_line_utils.c bonus/error_bonus.c bonus/map_bonus.c bonus/ft_strcmp_bonus.c \
 		bonus/read_map_bonus.c bonus/free_bonus.c bonus/valid_file_bonus.c bonus/path_bonus.c bonus/set_map_bonus.c bonus/ft_itoa_bonus.c \
-		bonus/so_long_bonus.c bonus/game_bonus.c bonus/moves_bonus.c  bonus/helpers_bonus.c bonus/enemy_animation.c
-
+		bonus/so_long_bonus.c bonus/game_bonus.c bonus/moves_bonus.c  bonus/helpers_bonus.c bonus/enemy_animation_bonus.c bonus/open_door_bonus.c \
+		bonus/out_screen_bonus.c
 OBJ = $(SRC:.c=.o)
 OBJ_BONUS = $(SRC_BONUS:.c=.o)
 

@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_bonus.c                                    :+:      :+:    :+:   */
+/*   out_screen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/06 23:56:31 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/12 02:28:19 by ilel-hla         ###   ########.fr       */
+/*   Created: 2025/03/12 02:31:45 by ilel-hla          #+#    #+#             */
+/*   Updated: 2025/03/12 02:31:59 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long_bonus.h"
+#include "../so_long.h"
 
-int	ft_parsing(t_map **map, char **av)
+void	ft_out_of_screen(t_map *map)
 {
-	ft_file(av[1]);
-	*map = malloc(sizeof(t_map));
-	if (!*map)
-		return (0);
-	ft_set_map(*map);
-	(*map)->map = ft_read_map(av[1], *map);
-	if (!(*map)->map)
-		return (free(*map), 0);
-	ft_out_of_screen(*map);
-	ft_validate_map(*map);
-	ft_is_rectangular(*map);
-	ft_check_chars(*map);
-	ft_check_walls(*map);
-	ft_check_path(*map);
-	return (1);
+	if (map->width > 80 || map->height > 41)
+	{
+		ft_free(map->map);
+		free(map);
+		ft_error_exit("Error\nmap too big lol\n");
+	}
 }

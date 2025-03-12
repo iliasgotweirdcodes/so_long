@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 18:22:49 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/11 01:29:51 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/12 17:08:06 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,6 @@ void	ft_exit(t_map *map, t_game *game);
 void	destroy_images(t_game *game);
 void	ft_win(t_game *game);
 void	ft_error_free(t_map *map, char *message);
+void	ft_out_of_screen(t_map *map);
 
 #endif

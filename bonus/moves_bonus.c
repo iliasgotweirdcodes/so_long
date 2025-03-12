@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 23:55:17 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/11 01:34:01 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/12 16:07:50 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,25 +46,6 @@ void	ft_update_player(t_game *game, t_map *map, int x, int y)
 		x * TILE_SIZE, y * TILE_SIZE);
 }
 
-void	ft_collectible_exit(t_game *game, t_map *map, int x, int y)
-{
-	if (map->map[y][x] == 'C')
-	{
-		mlx_put_image_to_window(game->mlx, game->win, game->img_floor,
-			x * TILE_SIZE, y * TILE_SIZE);
-		mlx_put_image_to_window(game->mlx, game->win, game->img_player,
-			x * TILE_SIZE, y * TILE_SIZE);
-		game->map->collectible--;
-	}
-	if (game->map->collectible == 0)
-	{
-		mlx_put_image_to_window(game->mlx, game->win, game->img_exit_open,
-			map->exit_x * TILE_SIZE, map->exit_y * TILE_SIZE);
-		if (map->map[y][x] == 'E' && game->map->collectible == 0)
-			ft_win(game);
-	}
-}
-
 void	ft_move(t_game *game, t_map *map, int dx, int dy)
 {
 	int	x;
@@ -101,7 +82,6 @@ int	ft_keypress(int key, t_game *game)
 		ft_free(game->map->map);
 		free(game->map);
 		free(game->enemies);
-		free(game);
 		exit(0);
 	}
 	ft_put_str_win(game);

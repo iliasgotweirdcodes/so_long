@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 23:53:34 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/06 23:53:48 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/12 17:05:29 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,11 @@ void	ft_free(char **str)
 		i++;
 	}
 	free(str);
+}
+
+void	ft_error_free(t_map *map, char *message)
+{
+	ft_free(map->map);
+	free(map);
+	ft_error_exit(message);
 }

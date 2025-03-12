@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 16:20:23 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/10 23:04:03 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/12 16:04:03 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	ft_start_game(t_game *game, char *filename)
 	if (!game->mlx)
 	{
 		close (fd);
-		free(game);
 		ft_error_exit("Error\nFailed to initialize MLX\n");
 	}
 	game->win = mlx_new_window(game->mlx, game->map->width * TILE_SIZE,
@@ -48,7 +47,6 @@ void	ft_start_game(t_game *game, char *filename)
 		close (fd);
 		ft_free(game->map->map);
 		free(game->map);
-		free(game);
 		ft_error_exit("Error\nFailed to create window\n");
 	}
 	close (fd);
@@ -56,23 +54,25 @@ void	ft_start_game(t_game *game, char *filename)
 
 void	ft_load_img(t_game *game)
 {
+	int	img_demension;
+
+	img_demension = 32;
 	game->img_player = mlx_xpm_file_to_image(game->mlx, "textures/vampire.xpm",
-			&game->map->width, &game->map->height);
+			&img_demension, &img_demension);
 	game->img_wall = mlx_xpm_file_to_image(game->mlx, "textures/wall.xpm",
-			&game->map->width, &game->map->height);
+			&img_demension, &img_demension);
 	game->img_floor = mlx_xpm_file_to_image(game->mlx, "textures/floor.xpm",
-			&game->map->width, &game->map->height);
+			&img_demension, &img_demension);
 	game->img_collectible = mlx_xpm_file_to_image(game->mlx,
-			"textures/blood.xpm", &game->map->width, &game->map->height);
+			"textures/blood.xpm", &img_demension, &img_demension);
 	game->img_exit = mlx_xpm_file_to_image(game->mlx,
-			"textures/closed_exit.xpm", &game->map->width, &game->map->height);
+			"textures/closed_exit.xpm", &img_demension, &img_demension);
 	if (!game->img_player || !game->img_wall || !game->img_floor
 		|| !game->img_collectible || !game->img_exit)
 	{
 		destroy_images(game);
 		ft_free(game->map->map);
 		free(game->map);
-		free(game);
 		ft_error_exit("Error\nFailed to load textures\n");
 	}
 }
