@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 23:40:21 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/12 17:08:14 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/12 18:05:04 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ void	ft_enemy_render(t_game *game, int x, int y);
 void	ft_enemy_frames(t_game *game);
 void	ft_collectible_exit(t_game *game, t_map *map, int x, int y);
 void	ft_error_free(t_map *map, char *message);
+void	ft_game_free(t_game *game, char *message);
 void	ft_out_of_screen(t_map *map);
 
 #endif

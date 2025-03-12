@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 23:54:41 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/12 16:08:08 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/12 17:44:58 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ void	ft_start_game(t_game *game, char *filename)
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		ft_error_exit("Error\nFile does not exist.\n");
+		ft_game_free(game, "Error\nFile does not exist.\n");
 	if (!game->mlx)
 	{
 		close (fd);
-		ft_error_exit("Error\nFailed to initialize MLX\n");
+		ft_game_free(game, "Error\nFailed to initialize MLX\n");
 	}
 	game->win = mlx_new_window(game->mlx, game->map->width * TILE_SIZE,
 			game->map->height * TILE_SIZE, "so_long");

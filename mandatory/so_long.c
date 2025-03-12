@@ -6,17 +6,17 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 18:24:42 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/12 16:55:01 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/12 17:28:11 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	close_window(t_game *game)
+int	ft_close_window(t_game *game)
 {
+	mlx_destroy_window(game->mlx, game->win);
 	ft_free(game->map->map);
 	free(game->map);
-	mlx_destroy_window(game->mlx, game->win);
 	exit(0);
 }
 
@@ -45,7 +45,7 @@ int	main(int ac, char **av)
 	ft_start_game(&game, av[1]);
 	ft_draw_map(&game);
 	mlx_hook(game.win, 2, 0, ft_keypress, &game);
-	mlx_hook(game.win, 17, 0, close_window, &game);
+	mlx_hook(game.win, 17, 0, ft_close_window, &game);
 	mlx_loop(game.mlx);
 	return (ft_free(map->map), free(map), 0);
 }

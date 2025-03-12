@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 23:53:34 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/12 17:05:29 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/12 18:02:49 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,33 @@ void	ft_free(char **str)
 	int	i;
 
 	i = 0;
-	while (str[i])
+	if (str)
 	{
-		free(str[i]);
-		i++;
+		while (str[i])
+		{
+			free(str[i]);
+			i++;
+		}
 	}
 	free(str);
 }
 
 void	ft_error_free(t_map *map, char *message)
 {
-	ft_free(map->map);
-	free(map);
+	if (map)
+	{
+		ft_free(map->map);
+		free(map);
+	}
+	ft_error_exit(message);
+}
+
+void	ft_game_free(t_game *game, char *message)
+{
+	if (game->map)
+	{
+		ft_free(game->map->map);
+		free(game->map);
+	}
 	ft_error_exit(message);
 }

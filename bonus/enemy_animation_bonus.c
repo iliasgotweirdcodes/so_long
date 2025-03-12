@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 00:53:15 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/12 16:08:11 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/12 17:44:36 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_enemy_frames(t_game *game)
 		|| !game->img_enemy[3] || !game->img_enemy[4])
 	{
 		destroy_images(game);
-		ft_error_exit("Error\nFailed to load textures\n");
+		ft_game_free(game, "Error\nFailed to load textures\n");
 	}
 }
 

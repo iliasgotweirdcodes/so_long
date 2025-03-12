@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 23:57:02 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/12 00:58:50 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/12 17:49:06 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	ft_invalidpath(char **str, t_map *map)
 	ft_free(map->map);
 	free(map);
 	ft_free(str);
-	ft_error_exit("Error\ninvalid path.\n");
+	ft_error_free(map, "Error\ninvalid path.\n");
 }
 
 void	ft_check_path(t_map *map)
