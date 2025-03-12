@@ -6,12 +6,11 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 23:55:39 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/12 17:06:49 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/12 17:18:00 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long_bonus.h"
-
 
 int	ft_is_rectangular(t_map *map)
 {
