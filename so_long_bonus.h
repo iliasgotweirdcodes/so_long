@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 23:40:21 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/12 18:05:04 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/12 22:57:27 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int		ft_strcmp(char *s1, char *s2);
 void	ft_check_path(t_map *map);
 void	ft_set_map(t_map *map);
 int		map_width(char **map);
-int		ft_parsing(t_map **map, char **av);
+int		ft_parsing(t_map *map, char **av);
 int		count_map(int fd);
 void	ft_start_game(t_game *game, char *filename);
 void	ft_load_img(t_game *game);

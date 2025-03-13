@@ -3,7 +3,7 @@ NAME = so_long
 NAME_BONUS = so_long_bonus
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
 RM = rm -f
 LIBS = -lmlx -framework OpenGL -framework AppKit
 

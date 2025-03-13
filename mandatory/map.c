@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 00:11:45 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/12 17:07:19 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/13 00:55:44 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_is_rectangular(t_map *map)
 	while (map->map[i])
 	{
 		if ((int)ft_strlen(map->map[i]) != len)
-			ft_error_free(map, "Error\nMap is not rectangular.\n");
+			ft_error_free(map, "Error\nMap is not rectangular or empty line\n");
 		i++;
 	}
 	return (1);

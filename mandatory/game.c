@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 16:20:23 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/12 17:46:27 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/13 01:14:50 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,15 @@ void	ft_start_game(t_game *game, char *filename)
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		ft_game_free(game, "Error\nFile does not exist.\n");
+	{
+		ft_free(game->map->map);
+		ft_error_exit("Error\nFile does not exist.\n");
+	}
 	if (!game->mlx)
 	{
 		close (fd);
-		ft_game_free(game, "Error\nFailed to initialize MLX\n");;
+		ft_free(game->map->map);
+		ft_error_exit("Error\nFailed to initialize MLX\n");
 	}
 	game->win = mlx_new_window(game->mlx, game->map->width * TILE_SIZE,
 			game->map->height * TILE_SIZE, "so_long");
@@ -46,7 +50,6 @@ void	ft_start_game(t_game *game, char *filename)
 	{
 		close (fd);
 		ft_free(game->map->map);
-		free(game->map);
 		ft_error_exit("Error\nFailed to create window\n");
 	}
 	close (fd);
@@ -72,7 +75,6 @@ void	ft_load_img(t_game *game)
 	{
 		destroy_images(game);
 		ft_free(game->map->map);
-		free(game->map);
 		ft_error_exit("Error\nFailed to load textures\n");
 	}
 }

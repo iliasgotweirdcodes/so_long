@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 01:04:57 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/12 16:03:57 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/12 22:37:11 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,6 @@ int	ft_keypress(int key, t_game *game)
 	{
 		mlx_destroy_window(game->mlx, game->win);
 		ft_free(game->map->map);
-		free(game->map);
 		exit(0);
 	}
 	return (0);

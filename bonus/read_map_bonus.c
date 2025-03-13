@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 23:57:27 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/12 17:06:07 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/13 03:05:00 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,14 @@ void	close_open_fd(int *fd, char *filename)
 {
 	close(*fd);
 	*fd = open(filename, O_RDONLY);
+	if (fd < 0)
+		ft_error_exit("Error\nFile does not exist.\n");
 }
 
 void	ft_free_close(int fd, t_map *map)
 {
 	close(fd);
 	ft_free(map->map);
-	free(map);
 	ft_error_exit("Error\nEmpty map.\n");
 }
 
@@ -76,7 +77,7 @@ char	**ft_read_map(char *filename, t_map *map)
 	close_open_fd(&fd, filename);
 	cmap = malloc(sizeof(char *) * (map->height + 1));
 	if (!cmap)
-		return (close(fd), free(map), NULL);
+		return (close(fd), NULL);
 	i = 0;
 	line = get_next_line(fd);
 	while (i < map->height)

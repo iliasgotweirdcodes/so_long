@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 23:54:41 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/12 17:44:58 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/13 01:13:26 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,15 @@ void	ft_start_game(t_game *game, char *filename)
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		ft_game_free(game, "Error\nFile does not exist.\n");
+	{
+		ft_free(game->map->map);
+		ft_error_exit("Error\nFile does not exist.\n");
+	}
 	if (!game->mlx)
 	{
 		close (fd);
-		ft_game_free(game, "Error\nFailed to initialize MLX\n");
+		ft_free(game->map->map);
+		ft_error_exit("Error\nFailed to initialize MLX\n");
 	}
 	game->win = mlx_new_window(game->mlx, game->map->width * TILE_SIZE,
 			game->map->height * TILE_SIZE, "so_long");
@@ -48,7 +52,6 @@ void	ft_start_game(t_game *game, char *filename)
 	{
 		close (fd);
 		ft_free(game->map->map);
-		free(game->map);
 		ft_error_exit("Error\nFailed to create window\n");
 	}
 	close (fd);
@@ -68,15 +71,17 @@ void	ft_load_img(t_game *game)
 	game->img_exit = mlx_xpm_file_to_image(game->mlx,
 			"textures/closed_exit.xpm",
 			&game->img_demension, &game->img_demension);
+	game->img_exit_open = mlx_xpm_file_to_image(game->mlx,
+			"textures/opened_exit.xpm",
+			&game->img_demension, &game->img_demension);
 	ft_enemy_frames(game);
 	if (!game->img_player || !game->img_wall || !game->img_floor
-		|| !game->img_collectible || !game->img_exit
+		|| !game->img_collectible || !game->img_exit || !game->img_exit_open
 		|| !game->img_enemy[0] || !game->img_enemy[1] || !game->img_enemy[2]
 		|| !game->img_enemy[3] || !game->img_enemy[4])
 	{
 		destroy_images(game);
 		ft_free(game->map->map);
-		free(game->map);
 		ft_error_exit("Error\nFailed to load textures\n");
 	}
 }
