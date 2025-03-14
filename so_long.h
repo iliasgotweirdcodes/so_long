@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 18:22:49 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/12 22:19:15 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/14 01:39:36 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ char	*ft_strchr(char *s, int c);
 void	ft_error(char *message);
 void	ft_error_exit(char *message);
 char	**ft_read_map(char *filename, t_map *map);
-int		ft_is_rectangular(t_map *map);
+void	ft_is_rectangular(t_map *map);
 void	ft_validate_map(t_map *map);
 void	ft_check_chars(t_map *map);
 void	ft_check_walls(t_map *map);

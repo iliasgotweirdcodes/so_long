@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 23:57:27 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/13 03:05:00 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/14 03:34:47 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int	count_map(int fd)
 	if (len == 0)
 	{
 		close(fd);
-		free(str);
 		ft_error_exit("Error\nEmpty map.\n");
 	}
 	return (len);
@@ -56,9 +55,9 @@ void	close_open_fd(int *fd, char *filename)
 		ft_error_exit("Error\nFile does not exist.\n");
 }
 
-void	ft_free_close(int fd, t_map *map)
+void	ft_free_close(int *fd, t_map *map)
 {
-	close(fd);
+	close(*fd);
 	ft_free(map->map);
 	ft_error_exit("Error\nEmpty map.\n");
 }
@@ -88,6 +87,6 @@ char	**ft_read_map(char *filename, t_map *map)
 	map->width = map_width(cmap);
 	cmap[i] = NULL;
 	if (!cmap[0])
-		ft_free_close(fd, map);
+		ft_free_close(&fd, map);
 	return (close(fd), cmap);
 }

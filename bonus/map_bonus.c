@@ -6,20 +6,20 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 23:55:39 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/13 00:56:48 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/13 03:58:46 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long_bonus.h"
 
-int	ft_is_rectangular(t_map *map)
+void	ft_is_rectangular(t_map *map)
 {
 	int	i;
 	int	len;
 
 	i = 0;
 	if (!map->map || !map->map[0])
-		return (0);
+		return ;
 	len = ft_strlen(map->map[0]);
 	while (map->map[i])
 	{
@@ -27,7 +27,6 @@ int	ft_is_rectangular(t_map *map)
 			ft_error_free(map, "Error\nMap is not rectangular or empty line\n");
 		i++;
 	}
-	return (1);
 }
 
 void	ft_validate_map(t_map *map)

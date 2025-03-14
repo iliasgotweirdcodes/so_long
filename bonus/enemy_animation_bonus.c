@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 00:53:15 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/12 17:44:36 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/14 03:54:52 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	ft_animate(t_game *game)
 
 	i = 0;
 	game->cycle++;
-	if (game->cycle > 1200)
+	if (game->cycle > ANIMATION_SPEED)
 	{
 		ft_load_img(game);
 		game->frame = (game->frame + 1) % 5;

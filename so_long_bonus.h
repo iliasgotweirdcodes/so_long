@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 23:40:21 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/03/12 22:57:27 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/03/14 03:52:32 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define KEY_RIGHT 124
 # define KEY_ESC 53
 # define KEY_X 17
+#define ANIMATION_SPEED 1200
 
 typedef struct s_map
 {
@@ -93,7 +94,7 @@ char	*ft_strchr(char *s, int c);
 void	ft_error(char *message);
 void	ft_error_exit(char *message);
 char	**ft_read_map(char *filename, t_map *map);
-int		ft_is_rectangular(t_map *map);
+void	ft_is_rectangular(t_map *map);
 void	ft_validate_map(t_map *map);
 void	ft_check_chars(t_map *map);
 void	ft_check_walls(t_map *map);
